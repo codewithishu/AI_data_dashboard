@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Data Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <h1>📊 AI Data Dashboard</h1>
+    <p class="subtitle">Upload any CSV and get instant AI insights</p>
+  </nav>
+
+  <div class="container">
+
+    <!-- Upload Section -->
+    <div class="upload-section">
+      <div class="upload-box" id="upload-box">
+        <div class="upload-icon">📁</div>
+        <h3>Drop your CSV file here</h3>
+        <p>or click to browse</p>
+        <input type="file" id="csv-file" accept=".csv" hidden />
+        <button class="upload-btn" onclick="document.getElementById('csv-file').click()">
+          Choose CSV File
+        </button>
+      </div>
+      <p id="upload-message" class="message"></p>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="stats-section" id="stats-section" style="display:none">
+
+      <!-- Summary Cards -->
+      <div class="summary-cards" id="summary-cards"></div>
+
+      <!-- AI Insights -->
+      <div class="ai-section">
+        <button class="ai-btn" onclick="getAIInsights()">
+          🤖 Get AI Insights
+        </button>
+        <div class="ai-box" id="ai-box" style="display:none">
+          <h3>🤖 AI Analysis</h3>
+          <p id="ai-text"></p>
+        </div>
+      </div>
+
+      <!-- Charts -->
+      <div class="charts-section">
+        <h2>📈 Charts</h2>
+        <div class="chart-controls">
+          <select id="chart-column"></select>
+          <select id="chart-type">
+            <option value="bar">Bar Chart</option>
+            <option value="line">Line Chart</option>
+            <option value="pie">Pie Chart</option>
+          </select>
+          <button class="generate-btn" onclick="generateChart()">Generate Chart</button>
+        </div>
+        <div class="chart-container">
+          <canvas id="myChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Data Table -->
+      <div class="table-section">
+        <h2>📋 Data Preview</h2>
+        <div class="table-wrapper">
+          <table id="data-table"></table>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
