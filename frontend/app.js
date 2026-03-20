@@ -1,4 +1,4 @@
-const API = 'http://localhost:5000/api';
+const API = 'https://ai-data-dashboard-wtk4.onrender.com/api';
 
 let currentData = null;
 let currentColumns = null;
